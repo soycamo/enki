@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
 
   acts_as_taggable
 
+  belongs_to :author
+
   has_many                :comments, :dependent => :destroy
   has_many                :approved_comments, :class_name => 'Comment'
 
@@ -10,7 +12,7 @@ class Post < ActiveRecord::Base
   before_validation       :set_dates
   before_save             :apply_filter
 
-  validates_presence_of   :title, :slug, :body
+  validates_presence_of   :author, :title, :slug, :body
 
   validate                :validate_published_at_natural
 

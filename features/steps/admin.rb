@@ -1,4 +1,5 @@
 Given /I am logged in/ do
+  Factory(:author)
   post '/admin/session', :bypass_login => '1'
 end
 
